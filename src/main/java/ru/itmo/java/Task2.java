@@ -1,6 +1,5 @@
 package ru.itmo.java;
 
-@SuppressWarnings("all")
 public class Task2 {
 
     /**
@@ -18,13 +17,15 @@ public class Task2 {
      * Дан символ, верните его код. Не используйте явное приведение типов и любые библиотечные функции
      */
     int charCode(char c) {
-        return c; //your code here
+        return c;
     }
 
     /**
      * Даны 2 целых числа. Проверьте равны ли они
      */
-    boolean testIfIntsEqual(Integer a, Integer b) { return ( a.intValue() == b.intValue() ); }
+    boolean testIfIntsEqual(Integer a, Integer b) {
+        return a.equals(b);
+    }
 
     /**
      * Дано целое число. Выведите {@code true}, если оно входит в заданный диапазон или {@code false}
@@ -36,26 +37,25 @@ public class Task2 {
      * @param inclusively входят ли границы в заданный даипазон
      */
     boolean numberInRange(Integer number, Integer leftBound, Integer rightBound, Boolean inclusively) {
-        if(number != null && leftBound != null && rightBound != null && inclusively != null){
-            if (inclusively)
-                return (number <= rightBound && number >= leftBound);
-            else return  (number < rightBound && number > leftBound);
-        }
-        return false;
+        if (number == null || leftBound == null || rightBound == null || inclusively == null) return false;
+
+        return inclusively
+                ? number <= rightBound && number >= leftBound
+                : number < rightBound && number > leftBound;
     }
 
     /**
      * Даны 3 символа. Определите является ли хотя бы один из них цифрой 1..9
      */
     boolean atLeastOneIsDigit(char c1, char c2, char c3) {
-        return (Character.isDigit(c1) || Character.isDigit(c2) || Character.isDigit(c3));
+        return Character.isDigit(c1) || Character.isDigit(c2) || Character.isDigit(c3);
     }
 
     /**
      * Даны два вещественных числа. Определите равны ли они
      */
     boolean areRealNumbersEqual(double a, double b) {
-        return (Math.abs(a - b) < 0.000000001);
+        return Math.abs(a - b) < 0.000000001;
     }
 
     /**
@@ -69,8 +69,9 @@ public class Task2 {
      * Дано натуральное число N <= 10000. Выведите следующее после N четное число. Например: N = 8, Result = 10
      */
     int nextEvenNumber(int n) {
-        if(n % 2 == 0) return n + 2;
-        return n + 1;
+        return n % 2 == 0
+                ? n + 2
+                : n + 1;
     }
 
     /**
@@ -80,7 +81,7 @@ public class Task2 {
      * своем кабинете
      */
     int schoolDesks(int num1, int num2, int num3) {
-        return (num1 / 2 + num1 % 2 + num2 /2 + num2 % 2 + num3 / 2 + num3 % 2);
+        return num1 / 2 + num1 % 2 + num2 / 2 + num2 % 2 + num3 / 2 + num3 % 2;
     }
 
     /**
